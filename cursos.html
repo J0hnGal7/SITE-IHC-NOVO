@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos com Carga Horária EAD - Portal de Educação a Distância</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Estilos para o menu expansível (dropdown) */
+         .dropdown .dropdown-content {
+            opacity: 0;
+         transform: translateY(10px);
+         /* Aumentamos a duração da transição para 0.5s e adicionamos um delay para a visibilidade e opacidade */
+         transition: opacity 0.5s ease, transform 0.3s ease, visibility 0.3s;
+         visibility: hidden; /* Começa invisível */
+         min-width: 180px; /* Largura mínima do dropdown */
+         margin-top: 0.5rem;
+         border-radius: 0.375rem; /* rounded-md */
+         box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+         position: absolute;
+         background-color: white;
+         z-index: 20;
+        }
+        /* Mostra o menu quando o mouse está sobre o container .dropdown */
+        .dropdown:hover .dropdown-content {
+             opacity: 1;
+         transform: translateY(0);
+         visibility: visible; /* Torna-se visível no hover */
+         /* Adicionamos um transition-delay para a saída, mas não para a entrada */
+         transition-delay: 0s, 0s, 0s;
+        }
+
+        .dropdown .dropdown-content {
+        transition-delay: 0.1s; /* Ajuste este valor para mais ou menos tempo */
+     }
+
+     .dropdown:hover .dropdown-content {
+        transition-delay: 0s;
+     }
+        
+        /* Estilos para o Acordeão */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            padding: 0 1rem;
+        }
+        .accordion-button.active + .accordion-content {
+            padding: 1rem;
+        }
+        .accordion-button .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        .accordion-button.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Cabeçalho (Consistente com as outras páginas) -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between lg:justify-start h-20">
+                <!-- Logo e Nome do Site -->
+                <div class="flex items-center">
+                      <img src="img/ufprr.JPG" alt="Logo da Universidade Federal do Paraná" class="mr-3" style="height: 75.6px;">
+                    <span class="text-xl sm:text-2xl font-bold text-blue-700">SEaDIP</span>
+                </div>
+
+                <!-- Navegação Principal (para telas maiores) -->
+                <nav class="hidden lg:flex items-center space-x-4 lg:ml-20">
+                    <a href="site4.html" class="text-gray-600 hover:text-blue-600 px-2 py-2 rounded-md text-xs font-medium">INÍCIO</a>
+                    
+                    <!-- Item com Dropdown: SEaDIP -->
+                    <div class="relative dropdown">
+                        <button class="text-gray-600 hover:text-blue-600 px-2 py-2 rounded-md text-xs font-medium inline-flex items-center focus:outline-none">
+                            SEaDIP <i class="fas fa-chevron-down ml-1 text-xxs"></i>
+                        </button>
+                        <div class="dropdown-content text-left">
+                             <a href="SOBRE NÓS.HTML" class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-100">Sobre Nós</a>
+                        </div>
+                    </div>
+
+                    <!-- Item com Dropdown: LEGISLAÇÃO -->
+                     <div class="relative dropdown">
+                        <button class="text-gray-600 hover:text-blue-600 px-2 py-2 rounded-md text-xs font-medium inline-flex items-center focus:outline-none">
+                            LEGISLAÇÃO <i class="fas fa-chevron-down ml-1 text-xxs"></i>
+                        </button>
+                        <div class="dropdown-content text-left">
+                             <a href="lesgislacao.html" class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-100">Legislação EAD</a>
+                        </div>
+                    </div>
+
+                    <!-- Item com Dropdown: CURSOS -->
+                     <div class="relative dropdown">
+                        <button class="text-gray-600 hover:text-blue-600 px-2 py-2 rounded-md text-xs font-medium inline-flex items-center focus:outline-none">
+                            CURSOS <i class="fas fa-chevron-down ml-1 text-xxs"></i>
+                        </button>
+                        <div class="dropdown-content text-left">
+                             <a href="cursos.html" class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-100">Cursos com carga EAD</a>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="text-gray-600 hover:text-blue-600 px-2 py-2 rounded-md text-xs font-medium">LABCIPEAD</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 px-2 py-2 rounded-md text-xs font-medium">COMUNICAÇÃO</a>
+                    <a href="contato.html" class="text-gray-600 hover:text-blue-600 px-2 py-2 rounded-md text-xs font-medium">CONTATO</a>
+                    
+                    <!-- Pequena Barra de Pesquisa na Navegação -->
+                   <form action="busca.html" method="GET" class="relative ml-2">
+                        <input type="search" name="q" placeholder="Pesquisar..." class="w-36 py-1.5 px-3 pr-10 text-xs border border-gray-300 rounded-full text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                        <button type="submit" class="absolute right-0 top-0 bottom-0 text-gray-500 hover:text-blue-600 py-1.5 px-3 rounded-r-full" aria-label="Pesquisar"><i class="fas fa-search text-xs"></i></button>
+                    </form>
+                </nav>
+
+                <!-- Ícone do Menu Hamburger (para telas menores) -->
+                <div class="lg:hidden">
+                    <button id="menu-button" class="text-gray-600 hover:text-blue-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Mobile (oculto por padrão) -->
+        <div id="mobile-menu" class="lg:hidden hidden bg-white shadow-lg">
+           <a href="site4.html" class="block text-gray-600 hover:bg-blue-50 hover:text-blue-600 px-4 py-3 text-sm font-medium">INÍCIO</a>
+            <a href="SOBRE NÓS.HTML" class="block text-gray-600 hover:bg-blue-50 hover:text-blue-600 px-4 py-3 text-sm font-medium">SEaDIP</a>
+            <a href="lesgislacao.html" class="block text-gray-600 hover:bg-blue-50 hover:text-blue-600 px-4 py-3 text-sm font-medium">LEGISLAÇÃO</a>
+            <a href="cursos.html" class="block text-gray-600 hover:bg-blue-50 hover:text-blue-600 px-4 py-3 text-sm font-medium">CURSOS</a>
+            <a href="#" class="block text-gray-600 hover:bg-blue-50 hover:text-blue-600 px-4 py-3 text-sm font-medium">LABCIPEAD</a>
+            <a href="#" class="block text-gray-600 hover:bg-blue-50 hover:text-blue-600 px-4 py-3 text-sm font-medium">COMUNICAÇÃO</a>
+            <a href="CONTATO.HTML" class="block text-gray-600 hover:bg-blue-50 hover:text-blue-600 px-4 py-3 text-sm font-medium">CONTATO</a>
+            <!-- Pequena Barra de Pesquisa no Menu Mobile -->
+            <div class="px-4 py-3">
+                <form id="mobileNavSearchForm" class="relative">
+                    <input 
+                        type="search" 
+                        id="mobileNavSearchInput"
+                        placeholder="Pesquisar..." 
+                        class="w-full py-2 px-3 pr-10 text-sm border border-gray-300 rounded-full text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                    >
+                    <button 
+                        type="submit"
+                        class="absolute right-0 top-0 bottom-0 text-gray-500 hover:text-blue-600 py-2 px-3 rounded-r-full"
+                        aria-label="Pesquisar"
+                    >
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </header>
+    <!-- Conteúdo Principal -->
+    <main class="py-16 lg:py-24 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl lg:text-5xl font-bold text-blue-900 border-b-4 border-yellow-400 pb-4 mb-12">Cursos de Graduação com Carga Horária EAD</h1>
+                
+                <div class="space-y-4" id="campus-accordion">
+                    <!-- Gerado dinamicamente -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Rodapé (Consistente com a página inicial) -->
+    <footer id="contato" class="bg-blue-800 text-white pt-12 pb-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Entre em Contato</h3>
+                    <p class="mb-2"><i class="fas fa-map-marker-alt mr-2"></i> Praça Santos Andrade, 50, Curitiba, PR</p>
+                    <p class="mb-2"><i class="fas fa-phone mr-2"></i> (00) 1234-5678</p>
+                    <p class="mb-2"><i class="fas fa-envelope mr-2"></i> Contato (Teams ou e-mail):  seadip@ufpr.br</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Links Úteis</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-yellow-300 transition duration-150">Nossos Cursos</a></li>
+                        <li><a href="#" class="hover:text-yellow-300 transition duration-150">Perguntas Frequentes</a></li>
+                        <li><a href="#" class="hover:text-yellow-300 transition duration-150">Suporte ao Aluno</a></li>
+                        <li><a href="#" class="hover:text-yellow-300 transition duration-150">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Siga-nos</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-2xl hover:text-yellow-300 transition duration-150"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fcipead%2F&is_from_rle" class="text-2xl hover:text-yellow-300 transition duration-150"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-2xl hover:text-yellow-300 transition duration-150"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-2xl hover:text-yellow-300 transition duration-150"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-blue-700 my-6">
+            <div class="text-center text-sm text-blue-200">
+                &copy; <span id="currentYear"></span> Portal EaD. -Desenvolvido por Bruno Henrique do Prado
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const coursesData = [
+            { campus: "SETOR PALOTINA", courses: [{ name: "Medicina Veterinária", details: "Turno: Integral | Vagas: 40", disciplines: [ { period: "1º Período", name: "Introdução à Medicina Veterinária", code: "PV001", ch_ead: 15, ch_total: 30 }, { period: "2º Período", name: "Anatomia Animal I", code: "PV002", ch_ead: 30, ch_total: 60 }, { period: "3º Período", name: "Bioquímica", code: "PV003", ch_ead: 20, ch_total: 60 }, { period: "4º Período", name: "Farmacologia Básica", code: "PV004", ch_ead: 30, ch_total: 45 }, { period: "5º Período", name: "Nutrição Animal", code: "PV005", ch_ead: 30, ch_total: 60 } ] }] },
+            { campus: "SETOR DE EDUCAÇÃO", courses: [{ name: "Pedagogia", details: "Turno: Matutino/Noturno | Vagas: 80", disciplines: [ { period: "1º Período", name: "Psicologia da Educação I", code: "ED001", ch_ead: 30, ch_total: 60 }, { period: "2º Período", name: "Sociologia da Educação", code: "ED002", ch_ead: 30, ch_total: 60 }, { period: "3º Período", name: "Didática", code: "ED003", ch_ead: 45, ch_total: 90 }, { period: "4º Período", name: "História da Educação", code: "ED004", ch_ead: 30, ch_total: 60 }, { period: "5º Período", name: "Educação Inclusiva", code: "ED005", ch_ead: 30, ch_total: 60 } ] }] },
+            { campus: "SETOR DE ARTES COMUNICAÇÃO E DESIGN", courses: [{ name: "Design Gráfico", details: "Turno: Matutino | Vagas: 40", disciplines: [ { period: "1º Período", name: "História da Arte e do Design", code: "AC001", ch_ead: 30, ch_total: 60 }, { period: "2º Período", name: "Teoria da Cor", code: "AC002", ch_ead: 15, ch_total: 45 }, { period: "3º Período", name: "Tipografia I", code: "AC003", ch_ead: 30, ch_total: 60 }, { period: "4º Período", name: "Fotografia", code: "AC004", ch_ead: 15, ch_total: 45 }, { period: "5º Período", name: "Marketing Digital", code: "AC005", ch_ead: 30, ch_total: 45 } ] }] },
+            { campus: "SETOR DE CIÊNCIAS BIOLÓGICAS", courses: [{ name: "Biomedicina", details: "Turno: Integral | Vagas: 50", disciplines: [ { period: "1º Período", name: "Biologia Celular", code: "CB001", ch_ead: 30, ch_total: 90 }, { period: "2º Período", name: "Genética Básica", code: "CB002", ch_ead: 30, ch_total: 60 }, { period: "3º Período", name: "Imunologia", code: "CB003", ch_ead: 30, ch_total: 60 }, { period: "4º Período", name: "Microbiologia", code: "CB004", ch_ead: 30, ch_total: 90 }, { period: "5º Período", name: "Bioestatística", code: "CB005", ch_ead: 45, ch_total: 45 } ] }] },
+            { campus: "SETOR DE CIÊNCIAS AGRÁRIAS", courses: [{ name: "Agronomia", details: "Turno: Integral | Vagas: 80", disciplines: [ { period: "1º Período", name: "Introdução à Agronomia", code: "AG001", ch_ead: 15, ch_total: 30 }, { period: "2º Período", name: "Química Geral e Inorgânica", code: "AG002", ch_ead: 30, ch_total: 60 }, { period: "3º Período", name: "Botânica Geral", code: "AG003", ch_ead: 30, ch_total: 60 }, { period: "4º Período", name: "Genética e Evolução", code: "AG004", ch_ead: 30, ch_total: 60 }, { period: "5º Período", name: "Manejo de Plantas Daninhas", code: "AG005", ch_ead: 15, ch_total: 45 } ] }] },
+            { campus: "SETOR LITORAL", courses: [
+                { name: "Administração Pública", details: "Turno: Noturno | Vagas: 50 (Entrada única)", disciplines: [ { period: "1º Período", name: "Teoria Geral da Administração", code: "AP001", ch_ead: 30, ch_total: 60 }, { period: "2º Período", name: "Direito Público", code: "AP002", ch_ead: 30, ch_total: 60 }, { period: "3º Período", name: "Contabilidade Pública", code: "AP003", ch_ead: 45, ch_total: 90 }, { period: "4º Período", name: "Gestão de Pessoas no Setor Público", code: "AP004", ch_ead: 30, ch_total: 60 }, { period: "5º Período", name: "Políticas Públicas", code: "AP005", ch_ead: 30, ch_total: 60 } ] },
+                { name: "Artes", details: "Turno: Noturno | Vagas: 30 (Entrada única)", disciplines: [ { period: "1º Período", name: "História da Arte Antiga", code: "AR001", ch_ead: 30, ch_total: 60 }, { period: "2º Período", name: "Desenho de Observação", code: "AR002", ch_ead: 15, ch_total: 45 }, { period: "3º Período", name: "Arte e Cultura Popular Brasileira", code: "AR003", ch_ead: 30, ch_total: 45 }, { period: "4º Período", name: "Estética e Filosofia da Arte", code: "AR004", ch_ead: 30, ch_total: 60 }, { period: "5º Período", name: "Arte Contemporânea", code: "AR005", ch_ead: 30, ch_total: 60 } ] },
+                { name: "Ciências", details: "Turno: Noturno | Vagas: 50 (Entrada única)", disciplines: [ { period: "1º Período", name: "Fundamentos de Matemática", code: "CI001", ch_ead: 30, ch_total: 60 }, { period: "2º Período", name: "Fundamentos de Física", code: "CI002", ch_ead: 30, ch_total: 60 }, { period: "3º Período", name: "Fundamentos de Química", code: "CI003", ch_ead: 30, ch_total: 60 }, { period: "4º Período", name: "Fundamentos de Biologia", code: "CI004", ch_ead: 30, ch_total: 60 }, { period: "5º Período", name: "Metodologia Científica", code: "CI005", ch_ead: 45, ch_total: 45 } ] }
+            ]},
+            { campus: "SETOR DE CIÊNCIAS HUMANAS", courses: [{ name: "História", details: "Turno: Matutino/Noturno | Vagas: 100", disciplines: [ { period: "1º Período", name: "História Antiga", code: "HH001", ch_ead: 30, ch_total: 60 }, { period: "2º Período", name: "Teoria da História I", code: "HH002", ch_ead: 30, ch_total: 60 }, { period: "3º Período", name: "História do Brasil Colonial", code: "HH003", ch_ead: 30, ch_total: 60 }, { period: "4º Período", name: "História Moderna", code: "HH004", ch_ead: 30, ch_total: 60 }, { period: "5º Período", name: "Historiografia Brasileira", code: "HH005", ch_ead: 30, ch_total: 60 } ] }] },
+            { campus: "SETOR DE CIÊNCIAS SOCIAIS E APLICADAS", courses: [{ name: "Direito", details: "Turno: Matutino/Noturno | Vagas: 200", disciplines: [ { period: "1º Período", name: "Introdução ao Estudo do Direito", code: "JD001", ch_ead: 30, ch_total: 60 }, { period: "2º Período", name: "Teoria do Estado", code: "JD002", ch_ead: 30, ch_total: 60 }, { period: "3º Período", name: "Direito Constitucional I", code: "JD003", ch_ead: 30, ch_total: 60 }, { period: "4º Período", name: "Direito Penal I", code: "JD004", ch_ead: 30, ch_total: 60 }, { period: "5º Período", name: "Direito Civil I", code: "JD005", ch_ead: 30, ch_total: 60 } ] }] },
+            { campus: "SETOR DE CIÊNCIAS DA TERRA", courses: [{ name: "Geografia", details: "Turno: Matutino/Noturno | Vagas: 80", disciplines: [ { period: "1º Período", name: "Introdução à Geografia", code: "GT001", ch_ead: 30, ch_total: 60 }, { period: "2º Período", name: "Cartografia Básica", code: "GT002", ch_ead: 30, ch_total: 60 }, { period: "3º Período", name: "Geografia Física do Brasil", code: "GT003", ch_ead: 30, ch_total: 60 }, { period: "4º Período", name: "Geografia Humana", code: "GT004", ch_ead: 30, ch_total: 60 }, { period: "5º Período", name: "Climatologia", code: "GT005", ch_ead: 15, ch_total: 45 } ] }] },
+            {
+                campus: "CAMPUS JANDAIA DO SUL",
+                courses: [
+                    { name: "Engenharia Agrícola", details: "Turno: Integral | Vagas: 50 (Entrada única)", disciplines: [ { period: "1º Período", name: "Comunicação", code: "CE001", ch_ead: 30, ch_total: 30 }, { period: "2º Período", name: "Cálculo Diferencial e Integral I", code: "CM201", ch_ead: 30, ch_total: 90 }, { period: "3º Período", name: "Física I", code: "CF311", ch_ead: 30, ch_total: 90 }, { period: "4º Período", name: "Química Geral", code: "CQ201", ch_ead: 30, ch_total: 60 }, { period: "5º Período", name: "Topografia", code: "EA005", ch_ead: 15, ch_total: 45 } ] },
+                    { name: "Engenharia de Alimentos", details: "Turno: Integral | Vagas: 50 (Entrada única)", disciplines: [ { period: "1º Período", name: "Comunicação", code: "CE001", ch_ead: 30, ch_total: 30 }, { period: "2º Período", name: "Química Orgânica", code: "CQ202", ch_ead: 30, ch_total: 60 }, { period: "3º Período", name: "Bioquímica de Alimentos", code: "EA021", ch_ead: 30, ch_total: 60 }, { period: "4º Período", name: "Fenômenos de Transporte I", code: "EA022", ch_ead: 30, ch_total: 60 }, { period: "5º Período", name: "Microbiologia de Alimentos", code: "EA023", ch_ead: 30, ch_total: 60 } ] },
+                    { name: "Engenharia de Produção", details: "Turno: Integral | Vagas: 50 (Entrada única)", disciplines: [ { period: "1º Período", name: "Comunicação", code: "CE001", ch_ead: 30, ch_total: 30 }, { period: "2º Período", name: "Cálculo I", code: "CM201", ch_ead: 45, ch_total: 90 }, { period: "3º Período", name: "Desenho Técnico", code: "EP001", ch_ead: 30, ch_total: 60 }, { period: "4º Período", name: "Ciência dos Materiais", code: "EP002", ch_ead: 30, ch_total: 60 }, { period: "5º Período", name: "Gestão da Qualidade", code: "EP003", ch_ead: 30, ch_total: 45 } ] },
+                    { name: "Licenciatura em Ciências Exatas", details: "Turno: Noturno | Vagas: 50 (Entrada única)", disciplines: [ { period: "1º Período", name: "Leitura e Produção de Textos", code: "CE002", ch_ead: 60, ch_total: 60 }, { period: "2º Período", name: "Matemática Elementar", code: "EX001", ch_ead: 30, ch_total: 60 }, { period: "3º Período", name: "Física Geral I", code: "EX002", ch_ead: 30, ch_total: 90 }, { period: "4º Período", name: "Química Geral I", code: "EX003", ch_ead: 30, ch_total: 90 }, { period: "5º Período", name: "Didática Geral", code: "ED080", ch_ead: 30, ch_total: 60 } ] },
+                    { name: "Licenciatura em Computação", details: "Turno: Noturno | Vagas: 50 (Entrada única)", disciplines: [ { period: "1º Período", name: "Leitura e Produção de Textos", code: "CE002", ch_ead: 60, ch_total: 60 }, { period: "2º Período", name: "Algoritmos e Programação", code: "CI101", ch_ead: 30, ch_total: 90 }, { period: "3º Período", name: "Estruturas de Dados", code: "CI102", ch_ead: 30, ch_total: 90 }, { period: "4º Período", name: "Sistemas Operacionais", code: "CI103", ch_ead: 30, ch_total: 60 }, { period: "5º Período", name: "Redes de Computadores", code: "CI104", ch_ead: 30, ch_total: 60 } ] }
+                ]
+            },
+            { campus: "SETOR DE EDUCAÇÃO PROFISSIONAL E TECNOLÓGICA", courses: [{ name: "Análise e Desenvolvimento de Sistemas", details: "Turno: Noturno | Vagas: 40", disciplines: [ { period: "1º Período", name: "Lógica de Programação", code: "ET001", ch_ead: 30, ch_total: 60 }, { period: "2º Período", name: "Banco de Dados", code: "ET002", ch_ead: 30, ch_total: 60 }, { period: "3º Período", name: "Engenharia de Software I", code: "ET003", ch_ead: 30, ch_total: 60 }, { period: "4º Período", name: "Programação Web", code: "ET004", ch_ead: 45, ch_total: 90 }, { period: "5º Período", name: "Segurança da Informação", code: "ET005", ch_ead: 15, ch_total: 45 } ] }] },
+            {
+                campus: "SETOR DE CIÊNCIAS DA SAÚDE",
+                courses: [
+                    { name: "Ciências Biológicas", details: "Turno: Manhã e Tarde (Matutino/Vespertino) | Vagas: 40 (Entrada única)", disciplines: [ { period: "1º Período", name: "Biologia Celular", code: "BC063", ch_ead: 60, ch_total: 90 }, { period: "2º Período", name: "Genética", code: "BC064", ch_ead: 30, ch_total: 60 }, { period: "3º Período", name: "Zoologia de Invertebrados", code: "BC065", ch_ead: 30, ch_total: 90 }, { period: "4º Período", name: "Fisiologia Vegetal", code: "BC066", ch_ead: 30, ch_total: 60 }, { period: "5º Período", name: "Ecologia de Populações", code: "BC067", ch_ead: 15, ch_total: 45 } ] },
+                    { name: "Educação Física", details: "Turno: Manhã e Tarde (Matutino/Vespertino) / Noite (Noturno) | Vagas: 45 Matutino/Vespertino e 45 Noturno", disciplines: [ { period: "1º Período", name: "Leitura e Produção de Textos I", code: "CE075", ch_ead: 60, ch_total: 60 }, { period: "2º Período", name: "Anatomia Humana", code: "EF001", ch_ead: 30, ch_total: 90 }, { period: "3º Período", name: "Fisiologia do Exercício", code: "EF002", ch_ead: 30, ch_total: 60 }, { period: "4º Período", name: "Cinesiologia", code: "EF003", ch_ead: 30, ch_total: 60 }, { period: "5º Período", name: "Aprendizagem Motora", code: "EF004", ch_ead: 15, ch_total: 45 } ] },
+                    { name: "Enfermagem", details: "Turno: Manhã e Tarde (Matutino/Vespertino) | Vagas: 33 (Entrada única)", disciplines: [ { period: "2º Período", name: "Metodologia da Pesquisa", code: "SA213", ch_ead: 30, ch_total: 30 }, { period: "3º Período", name: "História da Enfermagem", code: "EN001", ch_ead: 15, ch_total: 30 }, { period: "4º Período", name: "Enfermagem em Saúde Coletiva", code: "EN002", ch_ead: 30, ch_total: 60 }, { period: "5º Período", name: "Semiologia e Semiotécnica", code: "EN003", ch_ead: 30, ch_total: 90 }, { period: "6º Período", name: "Ética e Legislação Profissional", code: "EN004", ch_ead: 30, ch_total: 30 } ] },
+                    { name: "Farmácia", details: "Turno: Manhã e Tarde (Matutino/Vespertino) / Noite (Noturno) | Vagas: 50 Matutino/Vespertino e 50 Noturno", disciplines: [ { period: "3º Período", name: "Metodologia da Pesquisa Científica", code: "BF081", ch_ead: 30, ch_total: 30 }, { period: "4º Período", name: "Farmacognosia I", code: "BF021", ch_ead: 30, ch_total: 60 }, { period: "5º Período", name: "Química Farmacêutica", code: "BF035", ch_ead: 15, ch_total: 60 }, { period: "6º Período", name: "Tecnologia Farmacêutica", code: "BF045", ch_ead: 30, ch_total: 90 }, { period: "7º Período", name: "Farmacologia Aplicada", code: "BF055", ch_ead: 30, ch_total: 60 } ] },
+                    { name: "Fisioterapia", details: "Turno: Manhã e Tarde (Matutino/Vespertino) | Vagas: 40 (Entrada única)", disciplines: [ { period: "1º Período", name: "Metodologia de Pesquisa", code: "ACS201", ch_ead: 30, ch_total: 30 }, { period: "2º Período", name: "Anatomia do Aparelho Locomotor", code: "FT001", ch_ead: 30, ch_total: 90 }, { period: "3º Período", name: "Fisiologia Humana", code: "FT002", ch_ead: 30, ch_total: 60 }, { period: "4º Período", name: "Cinesiologia e Biomecânica", code: "FT003", ch_ead: 30, ch_total: 60 }, { period: "5º Período", name: "Recursos Terapêuticos Manuais", code: "FT004", ch_ead: 15, ch_total: 45 } ] },
+                    { name: "Medicina", details: "Turno: Manhã e Tarde (Matutino/Vespertino) | Vagas: 110 (Entrada única)", disciplines: [ { period: "1º Período", name: "Bases Celulares e Moleculares", code: "ME001", ch_ead: 30, ch_total: 90 }, { period: "2º Período", name: "Morfofisiologia do Sistema Nervoso", code: "ME002", ch_ead: 30, ch_total: 90 }, { period: "3º Período", name: "Agentes Infecciosos e Parasitários", code: "ME003", ch_ead: 30, ch_total: 60 }, { period: "4º Período", name: "Epidemiologia", code: "ME004", ch_ead: 45, ch_total: 45 }, { period: "5º Período", name: "Saúde Coletiva I", code: "ME005", ch_ead: 30, ch_total: 60 } ] },
+                    { name: "Medicina Veterinária", details: "Turno: Manhã e Tarde (Matutino/Vespertino) | Vagas: 50 (Entrada única)", disciplines: [ { period: "1º Período", name: "Deontologia e Legislação", code: "MV001", ch_ead: 15, ch_total: 30 }, { period: "2º Período", name: "Bioquímica Veterinária", code: "MV002", ch_ead: 30, ch_total: 60 }, { period: "3º Período", name: "Melhoramento Animal", code: "MV003", ch_ead: 30, ch_total: 45 }, { period: "4º Período", name: "Epidemiologia Veterinária", code: "MV004", ch_ead: 30, ch_total: 45 }, { period: "5º Período", name: "Clínica de Ruminantes", code: "MV005", ch_ead: 15, ch_total: 60 } ] },
+                    { name: "Nutrição", details: "Turno: Manhã e Tarde (Matutino/Vespertino) | Vagas: 40 (Entrada única)", disciplines: [ { period: "1º Período", name: "Introdução à Nutrição", code: "NU001", ch_ead: 30, ch_total: 30 }, { period: "2º Período", name: "Bioquímica da Nutrição", code: "NU002", ch_ead: 30, ch_total: 60 }, { period: "3º Período", name: "Técnica Dietética", code: "NU003", ch_ead: 15, ch_total: 90 }, { period: "4º Período", name: "Avaliação Nutricional", code: "NU004", ch_ead: 30, ch_total: 60 }, { period: "5º Período", name: "Nutrição Materno-Infantil", code: "NU005", ch_ead: 30, ch_total: 60 } ] },
+                    { name: "Odontologia", details: "Turno: Manhã e Tarde (Matutino/Vespertino) | Vagas: 80 (Entrada única)", disciplines: [ { period: "1º Período", name: "Saúde Coletiva", code: "OD001", ch_ead: 30, ch_total: 60 }, { period: "2º Período", name: "Materiais Dentários", code: "OD002", ch_ead: 15, ch_total: 45 }, { period: "3º Período", name: "Anestesiologia", code: "OD003", ch_ead: 15, ch_total: 30 }, { period: "4º Período", "name": "Radiologia Odontológica", "code": "OD004", "ch_ead": 30, "ch_total": 60 }, { period: "5º Período", "name": "Periodontia I", "code": "OD005", "ch_ead": 15, "ch_total": 45 } ] },
+                    { name: "Psicologia", details: "Turno: Manhã e Tarde (Matutino/Vespertino) / Noite (Noturno) | Vagas: 45 Matutino/Vespertino e 45 Noturno", disciplines: [ { period: "1º Período", name: "Processos Psicológicos Básicos", code: "PS001", ch_ead: 30, ch_total: 60 }, { period: "2º Período", name: "Neurociências", code: "PS002", ch_ead: 30, ch_total: 60 }, { period: "3º Período", name: "Psicologia do Desenvolvimento", code: "PS003", ch_ead: 30, ch_total: 60 }, { period: "4º Período", name: "Psicopatologia I", code: "PS004", ch_ead: 30, ch_total: 60 }, { period: "5º Período", name: "Teorias e Sistemas Psicológicos", code: "PS005", ch_ead: 30, ch_total: 60 } ] },
+                    { name: "Terapia Ocupacional", details: "Turno: Manhã e Tarde (Matutino/Vespertino) | Vagas: 40 (Entrada única)", disciplines: [ { period: "1º Período", name: "Fundamentos da T.O.", code: "TO001", ch_ead: 30, ch_total: 60 }, { period: "2º Período", name: "Atividade e Análise Ocupacional", code: "TO002", ch_ead: 15, ch_total: 45 }, { period: "3º Período", name: "Processos Grupais", code: "TO003", ch_ead: 30, ch_total: 45 }, { period: "4º Período", name: "T.O. em Saúde Mental", code: "TO004", ch_ead: 30, ch_total: 60 }, { period: "5º Período", name: "T.O. na Comunidade", code: "TO005", ch_ead: 30, ch_total: 60 } ] }
+                ]
+            },
+            { campus: "SETOR DE CIÊNCIAS EXATAS", courses: [{ name: "Estatística", details: "Turno: Noturno | Vagas: 50", disciplines: [ { period: "1º Período", name: "Cálculo I", code: "CE001", ch_ead: 30, ch_total: 90 }, { period: "2º Período", name: "Probabilidade I", code: "CE002", ch_ead: 30, ch_total: 60 }, { period: "3º Período", name: "Inferência Estatística I", code: "CE003", ch_ead: 30, ch_total: 60 }, { period: "4º Período", name: "Modelos Lineares", code: "CE004", ch_ead: 30, ch_total: 60 }, { period: "5º Período", name: "Técnicas de Amostragem", code: "CE005", ch_ead: 30, ch_total: 60 } ] }] },
+            { campus: "SETOR DE TECNOLOGIA", courses: [{ name: "Engenharia Civil", details: "Turno: Integral | Vagas: 100", disciplines: [ { period: "1º Período", name: "Desenho Técnico I", code: "TC001", ch_ead: 30, ch_total: 60 }, { period: "2º Período", name: "Mecânica dos Sólidos", code: "TC002", ch_ead: 30, ch_total: 60 }, { period: "3º Período", name: "Ciência e Tecnologia dos Materiais", code: "TC003", ch_ead: 30, ch_total: 60 }, { period: "4º Período", name: "Mecânica dos Fluidos", code: "TC004", ch_ead: 30, ch_total: 60 }, { period: "5º Período", name: "Hidráulica", code: "TC005", ch_ead: 30, ch_total: 60 } ] }] },
+            { campus: "CENTRO DE ESTUDOS DO MAR", courses: [{ name: "Oceanografia", details: "Turno: Integral | Vagas: 40", disciplines: [ { period: "1º Período", name: "Introdução à Oceanografia", code: "OC001", ch_ead: 30, ch_total: 60 }, { period: "2º Período", name: "Geologia Marinha", code: "OC002", ch_ead: 30, ch_total: 60 }, { period: "3º Período", name: "Química da Água do Mar", code: "OC003", ch_ead: 30, ch_total: 60 }, { period: "4º Período", name: "Biologia Marinha", code: "OC004", ch_ead: 30, ch_total: 60 }, { period: "5º Período", name: "Física das Ondas", code: "OC005", ch_ead: 30, ch_total: 60 } ] }] }
+        ];
+
+        const campusAccordionContainer = document.getElementById('campus-accordion');
+
+        coursesData.forEach(campus => {
+            const campusDiv = document.createElement('div');
+            
+            let coursesHtml = '';
+            if (campus.courses.length > 0) {
+                 campus.courses.forEach(course => {
+                    let disciplinesTable = '<p class="text-sm text-gray-500 mt-2">Nenhuma disciplina com carga horária EAD para este curso.</p>';
+                    if (course.disciplines.length > 0) {
+                        disciplinesTable = `
+                            <div class="overflow-x-auto mt-4">
+                                <table class="min-w-full text-sm text-left">
+                                    <thead class="bg-gray-200">
+                                        <tr>
+                                            <th class="p-2 font-semibold">Período Ideal</th>
+                                            <th class="p-2 font-semibold">Disciplina</th>
+                                            <th class="p-2 font-semibold">Código</th>
+                                            <th class="p-2 font-semibold">C.H. EAD</th>
+                                            <th class="p-2 font-semibold">C.H. Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200">
+                                        ${course.disciplines.map(d => `
+                                            <tr>
+                                                <td class="p-2">${d.period}</td>
+                                                <td class="p-2">${d.name}</td>
+                                                <td class="p-2">${d.code}</td>
+                                                <td class="p-2">${d.ch_ead}</td>
+                                                <td class="p-2">${d.ch_total}</td>
+                                            </tr>
+                                        `).join('')}
+                                    </tbody>
+                                </table>
+                            </div>
+                        `;
+                    }
+
+                    coursesHtml += `
+                        <div>
+                            <button class="accordion-button w-full text-left bg-blue-50 hover:bg-blue-100 p-3 rounded-md font-medium text-md text-blue-700 flex justify-between items-center transition-colors">
+                                <span>${course.name}</span>
+                                <i class="fas fa-chevron-down accordion-icon text-sm"></i>
+                            </button>
+                            <div class="accordion-content bg-white rounded-b-md">
+                                <p class="text-sm text-gray-600 font-semibold">${course.details}</p>
+                                ${disciplinesTable}
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                 coursesHtml = '<p class="text-sm text-gray-500 p-3">Não há cursos com carga horária EAD para este setor no momento.</p>';
+            }
+
+            campusDiv.innerHTML = `
+                <button class="accordion-button w-full text-left bg-gray-100 hover:bg-gray-200 p-4 rounded-md font-semibold text-lg text-blue-800 flex justify-between items-center transition-colors">
+                    <span>${campus.campus}</span>
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="space-y-2 mt-2">
+                        ${coursesHtml}
+                    </div>
+                </div>
+            `;
+
+            campusAccordionContainer.appendChild(campusDiv);
+        });
+
+
+        // Script para menu mobile
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (menuButton && mobileMenu) {
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Script para o ano atual no rodapé
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Script para o acordeão
+        document.getElementById('campus-accordion').addEventListener('click', function (e) {
+            const button = e.target.closest('.accordion-button');
+            if (!button) return;
+
+            const content = button.nextElementSibling;
+            
+            button.classList.toggle('active');
+
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
+
+            const parentAccordionContent = button.closest('.accordion-content');
+            if (parentAccordionContent && parentAccordionContent.style.maxHeight) {
+                setTimeout(() => {
+                    parentAccordionContent.style.maxHeight = parentAccordionContent.scrollHeight + 'px';
+                }, 400); // Aguarda a transição do filho terminar
+            }
+        });
+
+         // Script para a página de pesquisa
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchTerm = urlParams.get('q');
+            const searchTermSpan = document.getElementById('search-term');
+            
+            if (searchTermSpan) {
+                if (searchTerm) {
+                    searchTermSpan.textContent = searchTerm;
+                    // Aqui você poderia adicionar uma lógica real de busca.
+                    // Por enquanto, apenas exibimos os resultados de exemplo.
+                } else {
+                     document.querySelector('main .max-w-4xl').innerHTML = `
+                        <h1 class="text-3xl lg:text-4xl font-bold text-blue-900 mb-2">Pesquisa</h1>
+                        <p class="text-lg text-gray-600">Por favor, utilize a barra de pesquisa no topo da página para buscar.</p>
+                     `;
+                }
+            }
+
+    </script>
+
+</body>
+</html>
